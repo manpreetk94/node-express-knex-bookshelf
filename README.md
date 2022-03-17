@@ -64,7 +64,7 @@ exports.down = function(knex) {
 
 ````
 
-Add columns structure into thi sfile sane save this
+Add columns structure into this file and save this
 
 ```js
 /**
@@ -96,6 +96,52 @@ Run the migrate command to create this in Database
 knex migrate:latest
 
 ```
+
+
+## To add more columns in existing table using knex migrations
+
+```js
+knex migrate:make add_status_to_categories
+
+````
+
+```js
+exports.up = function(knex, Promise) {
+    return knex.schema.table('categories', function(t) {
+        t.integer('status').defaultTo(1);
+    });
+};
+
+exports.down = function(knex, Promise) {
+    return knex.schema.table('categories', function(t) {
+        t.dropColumn('status');
+    });
+};
+
+
+````
+
+## To remove columns in existing table using knex migrations
+```js
+knex migrate:make remove_status_from_categories
+
+````
+
+
+```js
+exports.up = function(knex, Promise) {
+    return knex.schema.table('categories', function(t) {
+        t.dropColumn('status');
+    });
+};
+
+exports.down = function(knex, Promise) {
+    return knex.schema.table('categories', function(t) {
+        t.enum('status').notNull();
+    });
+};
+
+````
 
 
 ## Model Relations ORM
