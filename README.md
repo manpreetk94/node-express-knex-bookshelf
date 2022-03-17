@@ -13,7 +13,7 @@ This Package is currently using following dependencies.
 * [mysql]    - "^2.18.1"
 ```
 
-### To run the project
+## To run the project
 
 Install Dependencies
 ```js
@@ -22,9 +22,16 @@ sudo npm i
 
 ```
 
-## To run migrations
+### To run migrations
 ```js
 knex migrate:latest
+
+````
+
+
+### Start Project
+```js
+sudo npm start
 
 ````
 
